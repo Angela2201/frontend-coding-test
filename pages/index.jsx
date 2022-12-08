@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import Navbar from './components/Navbar';
+import Link from 'next/link';
+import Navbar from '../components/Navbar';
 
 const Home = () => {
 
@@ -32,24 +33,28 @@ const Home = () => {
     renderedPeople.push(renderedPerson);
   }
 
+  const handleOptionId = (event) => {
+    let id = event.target.id
+    console.log(id)
+  }
+
   return (
     <div>
       <Navbar />
-      <p>
-        Hola mundo!
-      </p>
       {renderedPeople.map((item, index) => (
         <li key={index}>
-          <a>
-            {item.picture}
-            <ul>
-            Full Name: {item.fullName} <br />
-            Age: {item.age} <br />
-            Occupation: {item.occupation}
-            </ul>
-          </a>
+          {/* <Link href="/pages/profile/[id].jsx"> */}
+            <a href='/profile/<id>' onChange={handleOptionId}>
+              {item.picture}
+              <ul>
+              Full Name: {item.fullName} <br />
+              Age: {item.age} <br />
+              Occupation: {item.occupation}
+              </ul>
+            </a>
+          {/* </Link> */}
         </li>
-      ) )}
+      ))}
     </div>
   )
 }
