@@ -35,7 +35,9 @@ function Person({ item, showAs }) {
                         Gender: {item.gender}
                     </div>
                     <div>
-                        <button className={styles.edit}>Edit</button>
+                        <Link href={`${convertToPath(item.fullName)}/Edit`}>
+                            <button className={styles.edit}>Edit</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -46,22 +48,19 @@ function Person({ item, showAs }) {
     <div className={styles.item}>
         <div>
             <Link href={`/people/${convertToPath(item.fullName)}`}>
-            <a>
-                <Image
-                    src={item.picture}
-                    alt={item.fullName}
-                    width={100}
-                    height={100}
-                />
-            </a>
+                <a>
+                    <Image
+                        src={item.picture}
+                        alt={item.fullName}
+                        width={100}
+                        height={100}
+                    />
+                </a>
             </Link>
         </div>
-            Age: {item.age}
         <div>
             <h3>
-                <Link href={`/people/url-a-mi-componente`}>
-            <a>Name: {item.fullName}</a>
-            </Link>
+                <a>Name: {item.fullName}</a>
             </h3>
         </div>
 

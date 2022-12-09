@@ -3,13 +3,13 @@ import { getItems } from "../services/itemService";
 export async function getPathsFromIds() {
     const items = await getItems();
 
-    const ids = items.map(item => {
+    const ids = items.map((item) => {
         return {
             params: {
                 id: convertToPath(item.fullName),
-            },
-        };
-    });
+            }
+        }
+    })
 
     return ids;
 }
